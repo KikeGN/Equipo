@@ -45,6 +45,35 @@ namespace Clothware.BACKEND
         }
 
 
+        public void ultimoproducto(TextBox tex)
+        {
+            conexxion.ConnectionString = cadenaConexion;
+            try
+            {
+                conexxion.Open();
+                string query = "select max(idproducto)+1 as 'actual' from productos;";
+                MySqlCommand cmd = new MySqlCommand(query, conexxion);
+                
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    tex.Text = reader[0].ToString();
+                }
+
+         
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexxion.Close();
+            }
+        }
+
 
         public void agregarProducto(pojoProducto producto)
         {

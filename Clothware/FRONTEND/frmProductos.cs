@@ -30,6 +30,7 @@ namespace Clothware
         private void button1_Click(object sender, EventArgs e)
         {
             frmAgregarProductos a = new frmAgregarProductos();
+            c.ultimoproducto(a.txtID);
             a.ShowDialog();
             cargartablas();
         }
